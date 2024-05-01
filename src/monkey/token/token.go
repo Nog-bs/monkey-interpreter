@@ -1,3 +1,10 @@
+/*
+ * Token module that handles all declarations related to token data
+ *
+ * @author Edro Gonzales
+ * @version 2024
+ */
+
 package token
 
 type TokenType string
@@ -11,6 +18,9 @@ type Token struct {
 	Literal string
 }
 
+/*
+ * Global Token Declarations
+ */
 const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"

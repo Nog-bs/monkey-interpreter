@@ -1,3 +1,10 @@
+/*
+ * Lexer test module to test lexing process from lexer module.
+ *
+ * @author Edro Gonzales
+ * @version 2024
+ */
+
 package lexer
 
 import (
@@ -5,7 +12,11 @@ import (
 	"testing"
 )
 
+/*
+ * Test Next Token function
+ */
 func TestNextToken(t *testing.T) {
+    // given input test (the := means to automatically assign the type to our named variable input)
     input := `=+(){},;`
 
     tests := []struct {

@@ -22,7 +22,6 @@ type Lexer struct {
 	ch           byte
 }
 
-
 /*
  * New creates a new Lexer instance.
  * 

@@ -80,12 +80,43 @@ func (l *Lexer) NextToken() token.Token {
 	case 0:
 		tok.Type = token.EOF
 		tok.Literal = ""
+	default:
+		if isLetter(l.ch) {
+			tok.Literal = l.readIdentifier()
+			return tok
+		} else {
+			tok = newToken(token.ILLEGAL, l.ch)
+		}
 	}
 
 	// moves pointer to next token
 	l.readChar()
 	// returns current token
 	return tok
+}
+
+/*
+ * Will find within an lexer the whole piece of a word and return that portion
+ * 
+ * @param l a lexer that is performing lexical analysis on a piece of source code
+ * @return input a word
+ */
+func (l *Lexer) readIdentifier() string {
+	startPosition := l.position
+	for isLetter(l.ch) {
+		l.readChar()
+	}
+	return l.input[startPosition: l.position]
+}
+
+/**
+ * Determines if ascii code of given byte is within an alphanumeric value.
+ *
+ * @param ch is a byte that represents the ascii code value of the current char
+ * @return bool true if bye is a letter and false if not
+ */
+func isLetter(ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }
 
 /*

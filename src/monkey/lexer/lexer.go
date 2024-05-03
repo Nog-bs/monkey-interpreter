@@ -59,6 +59,8 @@ func (l *Lexer) readChar() {
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
+	l.skipWhiteSpace()
+
 	// deciding which tokenType this current token is and then providing it the literal passed in
 	switch l.ch {
 	case '=':
@@ -95,6 +97,12 @@ func (l *Lexer) NextToken() token.Token {
 	l.readChar()
 	// returns current token
 	return tok
+}
+
+func (l *Lexer) skipWhiteSpace() {
+	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
+		l.readChar()
+	}
 }
 
 /*

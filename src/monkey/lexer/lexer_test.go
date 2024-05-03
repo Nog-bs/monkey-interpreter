@@ -68,6 +68,7 @@ func TestNextToken(t *testing.T) {
 
     l := New(input)
 
+    // emulating parsing stage and comparing with tests
     for i, tt := range tests {
         tok := l.NextToken()
         if tok.Type != tt.expectedType {
